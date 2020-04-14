@@ -13,7 +13,7 @@ Thank you for my wife for the beta testing and coming up with a nice colour sche
 ### Screenshot
 
 <p align="center">
-  <img src="https://github.com/dimkadimon/2048Revolution/blob/gh-pages/screenshot.png" alt="Screenshot"/>
+  <img src="https://github.com/dimkadimon/2048Revolution/blob/master/screenshot.png" alt="Screenshot"/>
 </p>
 
 
