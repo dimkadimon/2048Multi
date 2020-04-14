@@ -18,7 +18,7 @@ Thank you for my wife for the beta testing and coming up with a nice colour sche
 
 
 ## Contributing
-Changes and improvements are more than welcome! Feel free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`! If you can, please make sure the game fully works before sending the PR, as that will help speed up the process.
+Changes and improvements are more than welcome! Feel free to fork and open a pull request.
 
 You can find the same information in the [contributing guide.](https://github.com/dimkadimon/2048Revolution/blob/master/CONTRIBUTING.md)
 
