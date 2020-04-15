@@ -16,11 +16,21 @@ body {
   clear: both; }
 
 h1.title {
-  font-size: 80px;
+  font-size: 60px;
   font-weight: bold;
   margin: 0;
   display: block;
   float: left; }
+
+button {
+  color: white;
+  background: #bbada0;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 220px;
+}  
 
 @-webkit-keyframes move-up {
   0% {

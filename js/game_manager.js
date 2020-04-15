@@ -1,7 +1,8 @@
-function GameManager(size, InputManager, Actuator, StorageManager) {
+function GameManager(size, difficulty, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
+  this.difficulty     = difficulty;
   this.inputManager   = new InputManager;
-  this.storageManager = new StorageManager;
+  this.storageManager = new StorageManager(difficulty);
   this.actuator       = new Actuator;
 
   this.inputManager.on("move", this.move.bind(this));
@@ -13,7 +14,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
-  this.storageManager.clearGameState();
+  this.storageManager.clearGameState(this.difficulty);
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
 };
@@ -58,9 +59,11 @@ GameManager.prototype.setup = function () {
 
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
-  this.size=4;
-  //add (size-1) walls
-  for (var i = 0; i < this.size-1; i++)
+  var walls=this.difficulty+1;
+  //var walls=5;
+
+  //add walls
+  for (var i = 0; i < walls; i++)
     this.addTile(""); 
 
   //add 2s
@@ -97,7 +100,7 @@ GameManager.prototype.actuate = function () {
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
-    this.storageManager.clearGameState();
+    this.storageManager.clearGameState(this.difficulty);
   } else {
     this.storageManager.setGameState(this.serialize());
   }

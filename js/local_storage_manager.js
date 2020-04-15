@@ -18,8 +18,8 @@ window.fakeStorage = {
   }
 };
 
-function LocalStorageManager() {
-  this.bestScoreKey     = "bestScore2";
+function LocalStorageManager(difficulty) {
+  this.setDifficulty(difficulty);
   this.gameStateKey     = "gameState";
 
   var supported = this.localStorageSupported();
@@ -58,6 +58,11 @@ LocalStorageManager.prototype.setGameState = function (gameState) {
   this.storage.setItem(this.gameStateKey, JSON.stringify(gameState));
 };
 
-LocalStorageManager.prototype.clearGameState = function () {
+LocalStorageManager.prototype.clearGameState = function (difficulty) {
+  this.setDifficulty(difficulty);
   this.storage.removeItem(this.gameStateKey);
+};
+
+LocalStorageManager.prototype.setDifficulty = function (difficulty) {
+  this.bestScoreKey     = "BestScore_"+difficulty;
 };
