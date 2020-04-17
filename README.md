@@ -7,7 +7,9 @@ This version of 2048 uses walls that cannot be moved. This adds a whole new dime
 
 ### Contributions
 
-Thank you for my wife for the beta testing and coming up with a nice colour scheme.
+Thank you to my wife for beta testing and coming up with a nice colour scheme.
+
+Thank you to Rowan Martin-Hughes for beta testing and coming up with a way to measure grid difficulty.
 
 
 ### Screenshot

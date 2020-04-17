@@ -60,18 +60,30 @@ GameManager.prototype.setup = function () {
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
   var walls=this.difficulty+1;
-  //var walls=5;
 
-  //add walls
-  for (var i = 0; i < walls; i++)
-    this.addTile(""); 
+  // W=2, 16-20, ave=18
+  // W=3, 13-18, ave=15.5
+  // W=4, 10-17, ave=13.5
+  // W=6, 4-13, ave=8.5
+  var min = [0, 0, 16, 13, 10, 0, 4];
+  var max = [0, 0, 20, 18, 17, 0, 13];
+
+  while(true)
+  {
+    //reset grid
+    this.grid        = new Grid(this.size);
+
+    //add walls
+    for (var i = 0; i < walls; i++)
+      this.addTile(""); 
+
+    var complexity = this.getComplexity();
+    if (complexity <= (min[walls]+max[walls])/2 - 1) break;
+  }
 
   //add 2s
   for (var i = 0; i < 2; i++)
     this.addTile(2);  
-
-  // for (var i = 0; i < 2; i++)
-  //   this.addTile(1);
 };
 
 // Adds a tile in a random position
@@ -282,6 +294,38 @@ GameManager.prototype.tileMatchesAvailable = function () {
   }
 
   return false;
+};
+
+
+GameManager.prototype.getComplexity = function () {
+
+  var tile;
+  var tile2;
+  var count = 0;
+
+  for (var x = 0; x < this.size; x++)
+  {
+    for (var y = 0; y < this.size; y++)
+    {
+      tile = this.grid.cellContent({ x: x, y: y });
+
+      if (!tile)
+      {
+        if (x+1 < this.size)
+        {
+          tile2 = this.grid.cellContent({ x: x+1, y: y });
+          if (!tile2) count++;
+        }
+        if (y+1 < this.size)
+        {
+          tile2 = this.grid.cellContent({ x: x, y: y+1 });
+          if (!tile2) count++;
+        }
+      }
+    }
+  }
+
+  return count;      
 };
 
 GameManager.prototype.positionsEqual = function (first, second) {
