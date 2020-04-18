@@ -84,6 +84,9 @@ GameManager.prototype.addStartTiles = function () {
   //add 2s
   for (var i = 0; i < 2; i++)
     this.addTile(2);  
+
+  if (!this.movesAvailable())
+    this.over = true; // Game over!
 };
 
 // Adds a tile in a random position
@@ -265,7 +268,38 @@ GameManager.prototype.findFarthestPosition = function (cell, vector) {
 };
 
 GameManager.prototype.movesAvailable = function () {
-  return this.grid.cellsAvailable() || this.tileMatchesAvailable();
+  return this.neighbouringEmpties() || this.tileMatchesAvailable();
+};
+
+
+//check that tiles have neighbouring empty cells
+GameManager.prototype.neighbouringEmpties = function () {
+
+  var self = this;
+  var tile;
+  var other;
+
+  for (var x = 0; x < this.size; x++) {
+    for (var y = 0; y < this.size; y++) {
+      tile = this.grid.cellContent({ x: x, y: y });
+
+      if (tile && tile.value!="") {
+        for (var direction = 0; direction < 4; direction++) {
+          var vector = self.getVector(direction);
+          var x2 = x+vector.x;
+          var y2 = y+vector.y;
+          if (x2>=0 && x2<this.size && y2>=0 && y2<this.size)
+          {
+            var cell   = { x: x2, y: y2 };
+            var other  = self.grid.cellContent(cell);
+            if (!other) return true;      // this neighbour is empty
+          }
+        }
+      }
+    }
+  }
+
+  return false;
 };
 
 // Check for available matches between tiles (more expensive check)
