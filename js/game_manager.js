@@ -63,10 +63,10 @@ GameManager.prototype.addStartTiles = function () {
 
   // W=2, 16-20, ave=18
   // W=3, 13-18, ave=15.5
-  // W=4, 10-17, ave=13.5
+  // W=4, 10-17, ave=13.5   NOTE: I hacked max[4] to avoid that silly grid
   // W=6, 4-13, ave=8.5
   var min = [0, 0, 16, 13, 10, 0, 4];
-  var max = [0, 0, 20, 18, 17, 0, 13];
+  var max = [0, 0, 20, 18, 15, 0, 13];
 
   while(true)
   {
