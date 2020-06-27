@@ -64,6 +64,5 @@ LocalStorageManager.prototype.clearGameState = function (difficulty) {
 };
 
 LocalStorageManager.prototype.setDifficulty = function (difficulty) {
-  this.bestScoreKey     = "Besties_"+difficulty;
-  if (difficulty==3) this.bestScoreKey     = "Besties2_"+difficulty;
+  this.bestScoreKey     = "Multies_"+difficulty;
 };

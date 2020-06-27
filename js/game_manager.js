@@ -59,31 +59,10 @@ GameManager.prototype.setup = function () {
 
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
-  var walls=this.difficulty+1;
 
-  // W=2, 16-20, ave=18
-  // W=3, 13-18, ave=15.5
-  // W=4, 10-17, ave=13.5   NOTE: I hacked max[4] to avoid that silly grid
-  // W=6, 4-13, ave=8.5
-  var min = [0, 0, 16, 13, 10, 0, 4];
-  var max = [0, 0, 20, 18, 15, 0, 13];
-
-  while(true)
-  {
-    //reset grid
-    this.grid        = new Grid(this.size);
-
-    //add walls
-    for (var i = 0; i < walls; i++)
-      this.addTile(""); 
-
-    var complexity = this.getComplexity();
-    if (complexity <= (min[walls]+max[walls])/2 - 1) break;
-  }
-
-  //add 2s
-  for (var i = 0; i < 2; i++)
-    this.addTile(2);  
+  //add tiles
+  this.addTile(2);  
+  this.addTile(3);  
 
   if (!this.movesAvailable())
     this.over = true; // Game over!
@@ -92,7 +71,7 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
+    var value = Math.random() < 0.5 ? 2 : 3;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
