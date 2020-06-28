@@ -1,9 +1,9 @@
-# 2048 Multi
+# Bicoloured 2048
 A small clone of [2048 by Gabriele Cirulli](http://gabrielecirulli.github.io/2048/).
 
 Made just for fun. [Play it here!](http://dimkadimon.github.io/2048Multi/)
 
-This version of 2048 uses blocks of two colours that need to merged separately. This adds a whole new dimension to the game. Please enjoy and share with your friends!
+This version of 2048 uses blocks of two colours that need to be merged separately. This adds a whole new dimension to the game. Please enjoy and share with your friends!
 
 
 ### Screenshot
@@ -19,4 +19,4 @@ Changes and improvements are more than welcome! Feel free to fork and open a pul
 You can find the same information in the [contributing guide.](https://github.com/dimkadimon/2048Multi/blob/master/CONTRIBUTING.md)
 
 ## License
-2048 Multi is licensed under the [MIT license.](https://github.com/dimkadimon/2048Multi/blob/master/LICENSE.txt)
+Bicoloured 2048 is licensed under the [MIT license.](https://github.com/dimkadimon/2048Multi/blob/master/LICENSE.txt)
